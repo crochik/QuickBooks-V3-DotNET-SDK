@@ -8733,6 +8733,8 @@ namespace Intuit.Ipp.Data {
         
         private bool homeCostAmountFieldSpecified;
         
+        private CustomExtensions[] customExtensionsField;
+        
         /// <remarks/>
         /// <summary>
         /// 
@@ -9056,6 +9058,24 @@ namespace Intuit.Ipp.Data {
             }
             set {
                 this.homeCostAmountFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        /// <summary>
+        /// 
+        /// Product: IES
+        /// Description: Custom extensions of the transaction line
+        /// Extensions like dimensions and other user defined categories
+        /// 
+        /// </summary>
+        [System.Xml.Serialization.XmlElementAttribute("CustomExtensions")]
+        public CustomExtensions[] CustomExtensions {
+            get {
+                return this.customExtensionsField;
+            }
+            set {
+                this.customExtensionsField = value;
             }
         }
     }
@@ -12180,6 +12200,111 @@ namespace Intuit.Ipp.Data {
             }
             set {
                 this.taxLineDetailExField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    /// <summary>
+    /// 
+    /// Product: IES
+    /// Description: Custom extensions for user defined categories like dimensions
+    /// 
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Intuit.Ipp.XsdExtension", "1.0.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schema.intuit.com/finance/v3")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://schema.intuit.com/finance/v3", IsNullable=true)]
+    public partial class CustomExtensions {
+        
+        private string extensionTypeField;
+        
+        private CustomExtensionAssociatedValues[] associatedValuesField;
+        
+        /// <remarks/>
+        /// <summary>
+        /// 
+        /// Product: IES
+        /// Description: Holds type of the custom extension eg. DIMENSION
+        /// 
+        /// </summary>
+        public string ExtensionType {
+            get {
+                return this.extensionTypeField;
+            }
+            set {
+                this.extensionTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        /// <summary>
+        /// 
+        /// Product: IES
+        /// Description: Holds the key value pairs of the extension
+        /// 
+        /// </summary>
+        [System.Xml.Serialization.XmlElementAttribute("AssociatedValues")]
+        public CustomExtensionAssociatedValues[] AssociatedValues {
+            get {
+                return this.associatedValuesField;
+            }
+            set {
+                this.associatedValuesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    /// <summary>
+    /// 
+    /// Product: IES
+    /// Description: Custom Extensions Values associated with entities like transactions
+    /// 
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Intuit.Ipp.XsdExtension", "1.0.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schema.intuit.com/finance/v3")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://schema.intuit.com/finance/v3", IsNullable=true)]
+    public partial class CustomExtensionAssociatedValues {
+        
+        private string keyField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        /// <summary>
+        /// 
+        /// Product: IES
+        /// Description: Holds the key of the associated custom extension value. This key is a reference to the custom extension defined in Custom Extensions Service
+        /// 
+        /// </summary>
+        public string Key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        /// <summary>
+        /// 
+        /// Product: IES
+        /// Description: Holds the value of the associated custom extension value
+        /// 
+        /// </summary>
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
             }
         }
     }
@@ -35330,6 +35455,32 @@ namespace Intuit.Ipp.Data {
     /// <summary>
     /// 
     /// Product: ALL
+    /// Description: Subcontractor's agency verification status for CIS
+    /// 
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Intuit.Ipp.XsdExtension", "1.0.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schema.intuit.com/finance/v3")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://schema.intuit.com/finance/v3", IsNullable=false)]
+    public enum AgencyVerificationStatus {
+        
+        /// <remarks/>
+        MATCHED,
+        
+        /// <remarks/>
+        UNMATCHED,
+        
+        /// <remarks/>
+        PENDING,
+        
+        /// <remarks/>
+        FAILED,
+    }
+    
+    /// <remarks/>
+    /// <summary>
+    /// 
+    /// Product: ALL
     /// Description: Describes the base class of name entities (Customer, Employee, Vendor, OtherName)
     /// 
     /// </summary>
@@ -37365,6 +37516,18 @@ namespace Intuit.Ipp.Data {
         
         private bool costRateFieldSpecified;
         
+        private AgencyVerificationStatus agencyVerificationStatusField;
+        
+        private bool agencyVerificationStatusFieldSpecified;
+        
+        private string agencyVerificationStatusMsgField;
+        
+        private System.DateTime agencyVerificationTSUTCField;
+        
+        private bool agencyVerificationTSUTCFieldSpecified;
+        
+        private string companyRegistrationNumberField;
+        
         /// <remarks/>
         /// <summary>
         /// Name of the contact within the vendor. Used by QBD only
@@ -38134,6 +38297,90 @@ namespace Intuit.Ipp.Data {
             }
             set {
                 this.costRateFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        /// <summary>
+        /// 
+        /// Subcontractor's agency verification status for CIS
+        /// 
+        /// </summary>
+        public AgencyVerificationStatus AgencyVerificationStatus {
+            get {
+                return this.agencyVerificationStatusField;
+            }
+            set {
+                this.agencyVerificationStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [JsonIgnore()]
+        public bool AgencyVerificationStatusSpecified {
+            get {
+                return this.agencyVerificationStatusFieldSpecified;
+            }
+            set {
+                this.agencyVerificationStatusFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        /// <summary>
+        /// 
+        /// Subcontractor's agency verification status detailed message for CIS
+        /// 
+        /// </summary>
+        public string AgencyVerificationStatusMsg {
+            get {
+                return this.agencyVerificationStatusMsgField;
+            }
+            set {
+                this.agencyVerificationStatusMsgField = value;
+            }
+        }
+        
+        /// <remarks/>
+        /// <summary>
+        /// 
+        /// Latest timestamp for subcontractor's agency verification for CIS
+        /// 
+        /// </summary>
+        public System.DateTime AgencyVerificationTSUTC {
+            get {
+                return this.agencyVerificationTSUTCField;
+            }
+            set {
+                this.agencyVerificationTSUTCField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [JsonIgnore()]
+        public bool AgencyVerificationTSUTCSpecified {
+            get {
+                return this.agencyVerificationTSUTCFieldSpecified;
+            }
+            set {
+                this.agencyVerificationTSUTCFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        /// <summary>
+        /// 
+        /// Company registration number for CIS
+        /// 
+        /// </summary>
+        public string CompanyRegistrationNumber {
+            get {
+                return this.companyRegistrationNumberField;
+            }
+            set {
+                this.companyRegistrationNumberField = value;
             }
         }
     }
