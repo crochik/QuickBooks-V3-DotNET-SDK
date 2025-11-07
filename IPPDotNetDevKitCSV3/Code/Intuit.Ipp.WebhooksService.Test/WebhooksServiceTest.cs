@@ -8,6 +8,7 @@ namespace Intuit.Ipp.WebhooksService.Test
 
     using Intuit.Ipp.Core;
     using Intuit.Ipp.Utility;
+    using System.Collections.Generic;
 
     [TestClass]
     public class WebhooksServiceTest
@@ -78,6 +79,29 @@ namespace Intuit.Ipp.WebhooksService.Test
                 Assert.AreEqual(webhooksEvent.EventNotifications[0].DataChangeEvent.Entities[0].Name, "Vendor");
 
 
+
+
+            }
+            catch (System.Exception ex)
+            {
+                Assert.Fail(ex.ToString());
+            }
+
+
+        }
+
+        [TestMethod]
+        public void GetWebhooksCloudEvents()
+        {
+            try
+            {
+
+                string wehooksResponsePayloadNew = "[{\"specversion\":\"1.0\",\"id\":\"d1a3aedd-9670-41bf-a4f9-c148a1cc4e03\",\"source\":\"intuit.dsnBgbseACLLRZNxo2dfc4evmEJdxde58xeeYcZliOU=\",\"type\":\"qbo.class.created.v1\",\"time\":\"2025-10-07T19:59:07.034359333Z\",\"intuitentityid\":\"1234\",\"intuitaccountid\":\"310687\"}]";
+
+                List<WebhooksCloudEvent> webhooksEvent = webhooksServiceTestCases.GetWebhooksCloudEvents(wehooksResponsePayloadNew);
+
+                Assert.AreEqual(webhooksEvent[0].SpecVersion, "1.0");
+                Assert.AreEqual(webhooksEvent[0].Id, "d1a3aedd-9670-41bf-a4f9-c148a1cc4e03");
 
             }
             catch (System.Exception ex)
