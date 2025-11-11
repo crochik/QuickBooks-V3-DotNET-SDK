@@ -24,7 +24,7 @@ namespace Intuit.Ipp.Exception
     using Intuit.Ipp.Exception.Properties;
 
     /// <summary>
-    /// Represents an Exception raised when an batch collection exceeds 25 items.
+    /// Represents an Exception raised when an batch collection exceeds 30 items.
     /// </summary>
     [System.Serializable]
     public class BatchItemsExceededException : SdkException
