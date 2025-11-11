@@ -184,7 +184,7 @@
     <value>string parameter can not be null or empty.</value>
   </data>
   <data name="batchItemsExceededMessage" xml:space="preserve">
-    <value>Number of Items in Batch Request exceeded the permissible limit of 25 items.</value>
+    <value>Number of Items in Batch Request exceeded the permissible limit of 30 items.</value>
   </data>
   <data name="PdfOperationNotSupportedOnEntity" xml:space="preserve">
     <value>Only entitites of type SalesReceipt, Invoice and Estimate are supported for this operation.</value>

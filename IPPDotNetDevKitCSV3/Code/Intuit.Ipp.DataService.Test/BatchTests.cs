@@ -224,7 +224,7 @@ namespace Intuit.Ipp.DataService.Test
 
         [TestMethod]
         [ExpectedException(typeof(Intuit.Ipp.Exception.IdsException))]
-        public void AddMoreThanTwentyFiveItemsInBatch()
+        public void AddMoreThanThirtyItemsInBatch()
         {
             ServiceContext context = Initializer.InitializeServiceContextQbo();
             DataService service = new DataService(context);
@@ -266,7 +266,7 @@ namespace Intuit.Ipp.DataService.Test
 
         [TestMethod]
         [ExpectedException(typeof(Intuit.Ipp.Exception.IdsException))]
-        public void AddTwentyFivePlusToBatch()
+        public void AddThirtyPlusToBatch()
         {
             Batch batch = GetBatch();
             string queryId = string.Empty;
@@ -322,7 +322,7 @@ namespace Intuit.Ipp.DataService.Test
 
         [TestMethod]
         [ExpectedException(typeof(Intuit.Ipp.Exception.IdsException))]
-        public void AddTwentyFivePlusToBatchEntity()
+        public void AddThirtyPlusToBatchEntity()
         {
             Batch batch = GetBatch();
             string queryId = string.Empty;
