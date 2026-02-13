@@ -8,6 +8,7 @@ namespace Intuit.Ipp.WebhooksService.Test
 
     using Intuit.Ipp.Core;
     using Intuit.Ipp.Utility;
+    using Newtonsoft.Json.Linq;
     using System.Collections.Generic;
 
     [TestClass]
@@ -96,13 +97,19 @@ namespace Intuit.Ipp.WebhooksService.Test
             try
             {
 
-                string wehooksResponsePayloadNew = "[{\"specversion\":\"1.0\",\"id\":\"d1a3aedd-9670-41bf-a4f9-c148a1cc4e03\",\"source\":\"intuit.dsnBgbseACLLRZNxo2dfc4evmEJdxde58xeeYcZliOU=\",\"type\":\"qbo.class.created.v1\",\"time\":\"2025-10-07T19:59:07.034359333Z\",\"intuitentityid\":\"1234\",\"intuitaccountid\":\"310687\"}]";
+                string wehooksResponsePayloadNew = "[{\"specversion\":\"1.0\",\"id\":\"d1a3aedd-9670-41bf-a4f9-c148a1cc4e03\",\"source\":\"intuit.dsnBgbseACLLRZNxo2dfc4evmEJdxde58xeeYcZliOU=\",\"type\":\"qbo.class.created.v1\",\"time\":\"2025-10-07T19:59:07.034359333Z\",\"intuitentityid\":\"1234\",\"intuitaccountid\":\"310687\",\"data\":{\"alternative_ids\":[{\"id\":\"djQuMTo5MTMwMzUyMjI1NzM5NDQ2OjlkNjk5ZTk2MDg:400000381\",\"namespace\":\"Intuit.sbseg.v4\"}]}}]";
 
                 List<WebhooksCloudEvent> webhooksEvent = webhooksServiceTestCases.GetWebhooksCloudEvents(wehooksResponsePayloadNew);
 
                 Assert.AreEqual(webhooksEvent[0].SpecVersion, "1.0");
                 Assert.AreEqual(webhooksEvent[0].Id, "d1a3aedd-9670-41bf-a4f9-c148a1cc4e03");
-
+                Dictionary<string,object> data = new Dictionary<string,object>();
+                data = webhooksEvent[0].Data;
+                foreach(KeyValuePair<string,object> kvp in data)
+                {
+                    string key = kvp.Key;
+                    Assert.AreEqual(key, "alternative_ids");
+                }
             }
             catch (System.Exception ex)
             {
