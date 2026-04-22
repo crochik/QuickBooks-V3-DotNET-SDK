@@ -340,8 +340,17 @@ namespace Intuit.Ipp.DataService
             CheckForVoidAllowedEntities(entity);
             string resourceString = entity.GetType().Name.ToLower(CultureInfo.InvariantCulture);
 
+            Type givenType = entity.GetType();
             // Builds resource Uri
-            string uri = string.Format(CultureInfo.InvariantCulture, "{0}/company/{1}/{2}?operation=void", CoreConstants.VERSION, this.serviceContext.RealmId, resourceString);
+            string uri;
+            if (givenType == typeof(SalesReceipt) || givenType == typeof(Payment))
+            { 
+                uri = string.Format(CultureInfo.InvariantCulture, "{0}/company/{1}/{2}?operation=update&include=void", CoreConstants.VERSION, this.serviceContext.RealmId, resourceString);
+            }
+            else
+            {
+                uri = string.Format(CultureInfo.InvariantCulture, "{0}/company/{1}/{2}?operation=void", CoreConstants.VERSION, this.serviceContext.RealmId, resourceString);
+            }
 
             // Creates request parameters
             RequestParameters parameters;

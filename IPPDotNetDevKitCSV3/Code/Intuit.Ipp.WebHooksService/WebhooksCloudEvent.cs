@@ -80,6 +80,6 @@ namespace Intuit.Ipp.WebhooksService
         /// Event data
         /// </summary>
         [JsonProperty("data")]
-        public Dictionary<string, string> Data { get; set; }
+        public Dictionary<string, object> Data { get; set; }
     }
 }
