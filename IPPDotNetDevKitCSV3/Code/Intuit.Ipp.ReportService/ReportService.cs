@@ -281,8 +281,7 @@ namespace Intuit.Ipp.ReportService
             if (!string.IsNullOrEmpty(subcol_pct_exp)) { uriParametersList.Add(new string[] { "subcol_pct_exp", subcol_pct_exp }); }
             if (!string.IsNullOrEmpty(subcol_pct_inc)) { uriParametersList.Add(new string[] { "subcol_pct_inc", subcol_pct_inc }); }
             if (!string.IsNullOrEmpty(subcol_pct_exp)) { uriParametersList.Add(new string[] { "adjusted_gain_loss", adjusted_gain_loss }); }
-
-
+            
 
             StringBuilder uriParameters = new StringBuilder();
             foreach (string[] uriParameter in uriParametersList)
@@ -291,6 +290,17 @@ namespace Intuit.Ipp.ReportService
                 uriParameters.Append(uriParameter[0].Trim());
                 uriParameters.Append("=");
                 uriParameters.Append(uriParameter[1].Trim());
+            }
+
+            if (testing_migration) 
+            { 
+                if(uriParameters.Length > 0)
+                {
+                    uriParameters.Append("&testing_migration");
+                }else
+                {
+                    uriParameters.Append("testing_migration");
+                }        
             }
 
             return uriParameters.ToString();
@@ -690,6 +700,11 @@ namespace Intuit.Ipp.ReportService
         /// Gets or sets the groupby
         /// </summary>
         public string groupby { get; set; }
+
+        /// <summary>
+        /// Gets or sets the groupby testing_migration
+        /// </summary>
+        public Boolean testing_migration { get; set; }
 
         #endregion
 

@@ -5008,6 +5008,7 @@ namespace Intuit.Ipp.Data {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RefundReceipt))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CreditMemo))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SalesOrder))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChangeOrder))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Estimate))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SalesReceipt))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Invoice))]
@@ -8137,6 +8138,7 @@ namespace Intuit.Ipp.Data {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RefundReceipt))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CreditMemo))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SalesOrder))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChangeOrder))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Estimate))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SalesReceipt))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Invoice))]
@@ -13071,6 +13073,7 @@ namespace Intuit.Ipp.Data {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RefundReceipt))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CreditMemo))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SalesOrder))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ChangeOrder))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Estimate))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SalesReceipt))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Invoice))]
@@ -15637,6 +15640,8 @@ namespace Intuit.Ipp.Data {
         
         private ConvenienceFeeDetail convenienceFeeDetailField;
         
+        private EnabledSurchargeInfo enabledSurchargeInfoField;
+        
         private string invoiceLinkSecurityCodeField;
         
         private System.DateTime invoiceLinkExpiryDateField;
@@ -16113,6 +16118,22 @@ namespace Intuit.Ipp.Data {
         /// <remarks/>
         /// <summary>
         /// 
+        /// Product: QBO
+        /// Description: Per-invoice surcharging settings indicating whether surcharging is enabled and for which payment methods
+        /// 
+        /// </summary>
+        public EnabledSurchargeInfo EnabledSurchargeInfo {
+            get {
+                return this.enabledSurchargeInfoField;
+            }
+            set {
+                this.enabledSurchargeInfoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        /// <summary>
+        /// 
         /// Product: All
         /// Description: QBO:  Security code associated with Sharable link of the invoice for external users
         /// 
@@ -16550,6 +16571,138 @@ namespace Intuit.Ipp.Data {
     
     /// <remarks/>
     /// <summary>
+    /// 
+    /// Product: QBO
+    /// Description: Per-invoice surcharging settings
+    /// 
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Intuit.Ipp.XsdExtension", "1.0.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schema.intuit.com/finance/v3")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://schema.intuit.com/finance/v3", IsNullable=true)]
+    public partial class EnabledSurchargeInfo {
+        
+        private bool enabledField;
+        
+        private bool enabledFieldSpecified;
+        
+        private SurchargePaymentMethodInfo cardField;
+        
+        private SurchargePaymentMethodInfo aCHField;
+        
+        /// <remarks/>
+        /// <summary>
+        /// 
+        /// Product: QBO
+        /// Description: Whether surcharging is enabled for this invoice
+        /// 
+        /// </summary>
+        public bool Enabled {
+            get {
+                return this.enabledField;
+            }
+            set {
+                this.enabledField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [JsonIgnore()]
+        public bool EnabledSpecified {
+            get {
+                return this.enabledFieldSpecified;
+            }
+            set {
+                this.enabledFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        /// <summary>
+        /// 
+        /// Product: QBO
+        /// Description: Credit card-specific surcharge settings
+        /// 
+        /// </summary>
+        public SurchargePaymentMethodInfo Card {
+            get {
+                return this.cardField;
+            }
+            set {
+                this.cardField = value;
+            }
+        }
+        
+        /// <remarks/>
+        /// <summary>
+        /// 
+        /// Product: QBO
+        /// Description: ACH-specific surcharge settings
+        /// 
+        /// </summary>
+        public SurchargePaymentMethodInfo ACH {
+            get {
+                return this.aCHField;
+            }
+            set {
+                this.aCHField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    /// <summary>
+    /// 
+    /// Product: QBO
+    /// Description: Payment method-specific surcharge settings
+    /// 
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Intuit.Ipp.XsdExtension", "1.0.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schema.intuit.com/finance/v3")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://schema.intuit.com/finance/v3", IsNullable=true)]
+    public partial class SurchargePaymentMethodInfo {
+        
+        private bool enabledField;
+        
+        private bool enabledFieldSpecified;
+        
+        /// <remarks/>
+        /// <summary>
+        /// 
+        /// Product: QBO
+        /// Description: Whether surcharging is enabled for this payment method
+        /// 
+        /// </summary>
+        public bool Enabled {
+            get {
+                return this.enabledField;
+            }
+            set {
+                this.enabledField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [JsonIgnore()]
+        public bool EnabledSpecified {
+            get {
+                return this.enabledFieldSpecified;
+            }
+            set {
+                this.enabledFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    /// <summary>
     /// SalesReceipt Transaction entity
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Intuit.Ipp.XsdExtension", "1.0.0")]
@@ -16719,6 +16872,122 @@ namespace Intuit.Ipp.Data {
             }
             set {
                 this.estimateExField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    /// <summary>
+    /// ChangeOrder represents a modification or addition to a
+    /// Project Cost Estimate (PCE). Modeled after Project Estimate -- extends
+    /// SalesTransaction directly with the same field structure.
+    /// Product: QBO
+    /// 
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Intuit.Ipp.XsdExtension", "1.0.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schema.intuit.com/finance/v3")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://schema.intuit.com/finance/v3", IsNullable=true)]
+    public partial class ChangeOrder : SalesTransaction {
+        
+        private System.DateTime expirationDateField;
+        
+        private bool expirationDateFieldSpecified;
+        
+        private string acceptedByField;
+        
+        private System.DateTime acceptedDateField;
+        
+        private bool acceptedDateFieldSpecified;
+        
+        private IntuitAnyType changeOrderExField;
+        
+        /// <remarks/>
+        /// <summary>
+        /// Date by which the change order must be
+        /// accepted before invalidation.
+        /// QBO only field.
+        /// 
+        /// </summary>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="dateTime")]
+        public System.DateTime ExpirationDate {
+            get {
+                return this.expirationDateField;
+            }
+            set {
+                this.expirationDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [JsonIgnore()]
+        public bool ExpirationDateSpecified {
+            get {
+                return this.expirationDateFieldSpecified;
+            }
+            set {
+                this.expirationDateFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        /// <summary>
+        /// Name of customer who accepted the change
+        /// order.
+        /// QBO only field.
+        /// 
+        /// </summary>
+        public string AcceptedBy {
+            get {
+                return this.acceptedByField;
+            }
+            set {
+                this.acceptedByField = value;
+            }
+        }
+        
+        /// <remarks/>
+        /// <summary>
+        /// Date change order was accepted.
+        /// QBO only field.
+        /// 
+        /// </summary>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="dateTime")]
+        public System.DateTime AcceptedDate {
+            get {
+                return this.acceptedDateField;
+            }
+            set {
+                this.acceptedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        [JsonIgnore()]
+        public bool AcceptedDateSpecified {
+            get {
+                return this.acceptedDateFieldSpecified;
+            }
+            set {
+                this.acceptedDateFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        /// <summary>
+        /// Extension entity for ChangeOrder
+        /// 
+        /// </summary>
+        public IntuitAnyType ChangeOrderEx {
+            get {
+                return this.changeOrderExField;
+            }
+            set {
+                this.changeOrderExField = value;
             }
         }
     }
@@ -22089,6 +22358,8 @@ namespace Intuit.Ipp.Data {
         
         private bool deferredRevenueFieldSpecified;
         
+        private CustomExtensions[] customExtensionsField;
+        
         /// <remarks/>
         /// <summary>
         /// 
@@ -23349,6 +23620,24 @@ namespace Intuit.Ipp.Data {
             }
             set {
                 this.deferredRevenueFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        /// <summary>
+        /// 
+        /// Product: IES
+        /// Description: Custom extensions of the Item
+        /// Extensions like dimensions and other user defined categories
+        /// 
+        /// </summary>
+        [System.Xml.Serialization.XmlElementAttribute("CustomExtensions")]
+        public CustomExtensions[] CustomExtensions {
+            get {
+                return this.customExtensionsField;
+            }
+            set {
+                this.customExtensionsField = value;
             }
         }
     }
@@ -39778,6 +40067,7 @@ namespace Intuit.Ipp.Data {
         [System.Xml.Serialization.XmlElementAttribute("Vendor", typeof(Vendor))]
         [System.Xml.Serialization.XmlElementAttribute("OtherName", typeof(OtherName))]
         [System.Xml.Serialization.XmlElementAttribute("Estimate", typeof(Estimate))]
+        [System.Xml.Serialization.XmlElementAttribute("ChangeOrder", typeof(ChangeOrder))]
         [System.Xml.Serialization.XmlElementAttribute("SalesOrder", typeof(SalesOrder))]
         [System.Xml.Serialization.XmlElementAttribute("SalesReceipt", typeof(SalesReceipt))]
         [System.Xml.Serialization.XmlElementAttribute("PurchaseOrder", typeof(PurchaseOrder))]
@@ -39921,6 +40211,7 @@ namespace Intuit.Ipp.Data {
         [System.Xml.Serialization.XmlElementAttribute("Budget", typeof(Budget))]
         [System.Xml.Serialization.XmlElementAttribute("CDCResponse", typeof(CDCResponse))]
         [System.Xml.Serialization.XmlElementAttribute("CascadeResponse", typeof(CascadeResponse))]
+        [System.Xml.Serialization.XmlElementAttribute("ChangeOrder", typeof(ChangeOrder))]
         [System.Xml.Serialization.XmlElementAttribute("ChargeCredit", typeof(ChargeCredit))]
         [System.Xml.Serialization.XmlElementAttribute("Class", typeof(Class))]
         [System.Xml.Serialization.XmlElementAttribute("Company", typeof(Company))]
@@ -40129,6 +40420,7 @@ namespace Intuit.Ipp.Data {
         [System.Xml.Serialization.XmlElementAttribute("BillPayment", typeof(BillPayment))]
         [System.Xml.Serialization.XmlElementAttribute("BooleanTypeCustomFieldDefinition", typeof(BooleanTypeCustomFieldDefinition))]
         [System.Xml.Serialization.XmlElementAttribute("Budget", typeof(Budget))]
+        [System.Xml.Serialization.XmlElementAttribute("ChangeOrder", typeof(ChangeOrder))]
         [System.Xml.Serialization.XmlElementAttribute("ChargeCredit", typeof(ChargeCredit))]
         [System.Xml.Serialization.XmlElementAttribute("Class", typeof(Class))]
         [System.Xml.Serialization.XmlElementAttribute("Company", typeof(Company))]
@@ -40310,6 +40602,7 @@ namespace Intuit.Ipp.Data {
         [System.Xml.Serialization.XmlElementAttribute("BillPayment", typeof(BillPayment))]
         [System.Xml.Serialization.XmlElementAttribute("BooleanTypeCustomFieldDefinition", typeof(BooleanTypeCustomFieldDefinition))]
         [System.Xml.Serialization.XmlElementAttribute("Budget", typeof(Budget))]
+        [System.Xml.Serialization.XmlElementAttribute("ChangeOrder", typeof(ChangeOrder))]
         [System.Xml.Serialization.XmlElementAttribute("ChargeCredit", typeof(ChargeCredit))]
         [System.Xml.Serialization.XmlElementAttribute("Class", typeof(Class))]
         [System.Xml.Serialization.XmlElementAttribute("Company", typeof(Company))]
@@ -41624,6 +41917,7 @@ namespace Intuit.Ipp.Data {
         [System.Xml.Serialization.XmlElementAttribute("BillPayment", typeof(BillPayment))]
         [System.Xml.Serialization.XmlElementAttribute("BooleanTypeCustomFieldDefinition", typeof(BooleanTypeCustomFieldDefinition))]
         [System.Xml.Serialization.XmlElementAttribute("Budget", typeof(Budget))]
+        [System.Xml.Serialization.XmlElementAttribute("ChangeOrder", typeof(ChangeOrder))]
         [System.Xml.Serialization.XmlElementAttribute("ChargeCredit", typeof(ChargeCredit))]
         [System.Xml.Serialization.XmlElementAttribute("Class", typeof(Class))]
         [System.Xml.Serialization.XmlElementAttribute("Company", typeof(Company))]
@@ -41729,6 +42023,7 @@ namespace Intuit.Ipp.Data {
         [System.Xml.Serialization.XmlElementAttribute("BooleanTypeCustomFieldDefinition", typeof(BooleanTypeCustomFieldDefinition))]
         [System.Xml.Serialization.XmlElementAttribute("Budget", typeof(Budget))]
         [System.Xml.Serialization.XmlElementAttribute("CDCQuery", typeof(CDCQuery))]
+        [System.Xml.Serialization.XmlElementAttribute("ChangeOrder", typeof(ChangeOrder))]
         [System.Xml.Serialization.XmlElementAttribute("ChargeCredit", typeof(ChargeCredit))]
         [System.Xml.Serialization.XmlElementAttribute("Class", typeof(Class))]
         [System.Xml.Serialization.XmlElementAttribute("Company", typeof(Company))]
@@ -41953,6 +42248,9 @@ namespace Intuit.Ipp.Data {
         
         /// <remarks/>
         CDCQuery,
+        
+        /// <remarks/>
+        ChangeOrder,
         
         /// <remarks/>
         ChargeCredit,
