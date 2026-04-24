@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet --list-sdks)",
+      "Bash(curl -s \"https://api.nuget.org/v3-flatcontainer/serilog.sinks.file/index.json\")",
+      "Bash(dotnet --list-runtimes)",
+      "Bash(dotnet restore *)",
+      "Bash(dotnet build *)",
+      "Bash(dotnet sln *)",
+      "Bash(grep -i \"UnitTests\\\\|\\\\.Test$\")"
+    ]
+  }
+}
