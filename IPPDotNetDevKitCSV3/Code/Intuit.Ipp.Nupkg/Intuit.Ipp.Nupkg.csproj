@@ -9,10 +9,10 @@
     <PackageId>IppDotNetSdkForQuickBooksApiV3</PackageId>
     <AssemblyName>IppDotNetSdkForQuickBooksApiV3</AssemblyName>
     <DocumentationFile>$(BaseOutputPath)$(AssemblyName).xml</DocumentationFile>
-    <MainVersion>14.7.1.1</MainVersion>
-    <PackageVersionSuffix>pre</PackageVersionSuffix>
-    <Version>$(MainVersion)-$(PackageVersionSuffix)</Version>
-    <Version>$(MainVersion)</Version>
+    <!-- <MainVersion>14.7.1.1</MainVersion> -->
+    <PackageVersionSuffix>css</PackageVersionSuffix>
+    <Version>14.7.1.1-$(PackageVersionSuffix)</Version>
+    <!-- <Version>$(MainVersion)</Version> -->
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <!--<NoBuild>true</NoBuild>-->
